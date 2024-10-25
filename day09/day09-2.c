@@ -33,7 +33,7 @@ int main() {
 		count++;
 	}
 	for (i = 0; i < count; i++) {
-		printf("<<입력된 상품 목록>>\n");
+		printf("\n<<입력된 상품 목록>>\n");
 		printf("\n");
 		printProduct(p[i]);
 	}
