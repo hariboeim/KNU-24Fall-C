@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+#define MAX_TOP 10000
+
+// topping_len은 배열 topping의 길이입니다.
+int solution(int topping[], size_t topping_len) {
+    int left_top[MAX_TOP+1] = {0,}; //철수
+    int right_top[MAX_TOP+1] = {0,}; //동생
+    int left_spe = 0;
+    int right_spe = 0;
+    int fair = 0;
+    
+    for(int i = 0; i<topping_len; i++) { //동생이 모두 먹을 떄
+        int top = topping[i];
+        if(right_top[top] == 0){
+            right_spe++;
+        }
+        right_top[top]++;
+    }
+    
+     for(int i = 0; i<topping_len; i++) { //철수
+        int top = topping[i];
+        right_top[top]--; //철수가 가져가니 동생은 빼야함
+        if(right_top[top] == 0){
+            right_spe--;
+        }
+        if(left_top[top] == 0){
+            left_spe++;
+        }
+        left_top[top]++;
+         
+         if(left_spe == right_spe){
+             fair++;
+         }
+    }
+    
+    
+    return fair;
+}
